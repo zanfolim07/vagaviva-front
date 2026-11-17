@@ -1,22 +1,30 @@
+import { ErrorBoundary } from 'react-error-boundary'
 import { BrowserRouter } from 'react-router-dom'
-import { Footer } from './components/Footer'
-import { Header } from './components/Header'
-import { VoltarTopo } from './components/VoltarTopo'
+import { AuthProvider } from './context/AuthContext'
 import { ThemeProvider } from './context/ThemeContext'
+import { AppRoutes } from './routes/AppRoutes'
+
+function ErroGeral({ resetErrorBoundary }: { resetErrorBoundary: () => void }) {
+  return (
+    <div role="alert" className="flex min-h-screen flex-col items-center justify-center gap-3 bg-bg px-6 text-center text-text">
+      <div className="text-[17px] font-medium">Algo deu errado nesta tela.</div>
+      <button type="button" onClick={resetErrorBoundary} className="vv-ghost">
+        Tentar de novo
+      </button>
+    </div>
+  )
+}
 
 export default function App() {
   return (
     <ThemeProvider>
-      <BrowserRouter>
-        <div className="flex min-h-screen flex-col overflow-x-clip bg-bg leading-[1.55] text-text">
-          <Header />
-          <main id="conteudo" className="flex flex-1 items-center justify-center px-6 py-24">
-            <h1 className="text-3xl font-bold">Vaga Viva</h1>
-          </main>
-          <Footer />
-          <VoltarTopo />
-        </div>
-      </BrowserRouter>
+      <AuthProvider>
+        <BrowserRouter>
+          <ErrorBoundary FallbackComponent={ErroGeral}>
+            <AppRoutes />
+          </ErrorBoundary>
+        </BrowserRouter>
+      </AuthProvider>
     </ThemeProvider>
   )
 }
