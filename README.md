@@ -16,6 +16,18 @@ Este projeto é a interface: todos os dados que mudam vêm da API REST em Java, 
 - React Hook Form
 - Fetch API, sem Axios nem outra biblioteca de requisições
 
+## Solução de problemas
+
+Em computadores com componentes muito antigos (principalmente processadores
+sem suporte a AVX2), o Vite 8 pode ser incompatível e fazer `npm run dev`
+falhar com o erro `illegal hardware instruction`. É uma limitação do hardware,
+não do projeto. Para contornar, use o Vite 7:
+
+```bash
+npm install -D vite@^7 @vitejs/plugin-react@^5
+npm run dev
+```
+
 ## Estrutura de pastas
 
 ```text
@@ -74,10 +86,10 @@ Para gerar a versão de produção: `npm run build`.
 
 ## Links
 
-- **GitHub:** [COLOCAR O LINK DO REPOSITÓRIO]
-- **Vercel:** [COLOCAR O LINK DA APLICAÇÃO]
-- **API Java (Render):** [COLOCAR O LINK DA API]
-- **Vídeo no YouTube:** [COLOCAR O LINK DO VÍDEO]
+- **GitHub:** https://github.com/zanfolim07/vagaviva-front
+- **Vercel:** https://vagaviva-front.vercel.app/
+- **API Java (Render):** https://vagaviva-api.onrender.com
+- **Vídeo no YouTube:** https://youtu.be/8T_0reS97Mg
 
 ## Contato
 
